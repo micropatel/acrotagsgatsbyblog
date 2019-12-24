@@ -18,6 +18,7 @@ exports.createPages = ({ actions, graphql }) => {
             tags
             level
             instructor
+            instructor_image
           }
         }
       }
@@ -122,7 +123,9 @@ exports.sourceNodes = async ({
     return item
   })
 
-  itemsArrayWithTagsArray.map((item, i) => {
+  itemsArrayWithTagsArray
+  .filter(item =>  !item.thumbnail.includes("eqn7kM8GqXk"))
+  .map((item, i) => {
     const itemNode = {
       id: createNodeId(`${i}`),
       parent: `__SOURCE__`,
